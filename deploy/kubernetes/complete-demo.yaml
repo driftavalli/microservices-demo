@@ -1,3 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sock-shop
+  labels:
+    app: sock-shop
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -238,7 +245,8 @@ metadata:
     name: front-end
   namespace: sock-shop
 spec:
-  type: NodePort
+  type: LoadBalancer
+  loadBalancerIP: 198.51.100.10
   ports:
   - port: 80
     targetPort: 8079
